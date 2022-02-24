@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+.Main {
+  background-color: aliceblue;
+}
+
+.Header {
+  background-color: blanchedalmond;
+
+}
+
+.Footer {
+  background-color: crimson;
+}
