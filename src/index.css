@@ -3,7 +3,9 @@ body {
 }
 
 .Main {
-  background-color: aliceblue;
+  background-color: lightgrey;
+  margin: 20px;
+  border-radius: 20px;
 }
 
 .Header {
@@ -13,4 +15,21 @@ body {
 
 .Footer {
   background-color: crimson;
+}
+
+.form-rounded{
+  border-radius: 10px;
+  display: inline;
+  width: 80%;
+  margin: 10px;
+  height: 40px;
+}
+
+
+h1{
+  margin: 0;
+}
+
+.input{
+  text-align: center;
 }

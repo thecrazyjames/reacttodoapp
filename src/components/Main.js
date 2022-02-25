@@ -3,7 +3,12 @@ import React from "react";
 // import Toast from 'react-bootstrap/Toast';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-
+// import Table from 'react-bootstrap/Table'
+import ListGroupItem from "react-bootstrap/ListGroupItem";
+import ListGroup from "react-bootstrap/ListGroup"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+// import fa-trash-can from '@fortawesome/free-solid-svg-icons'
 
 function Main() {
   const [todos, setTodos] = React.useState([]);
@@ -42,21 +47,31 @@ function Main() {
       saveData(newTodos);
   };
 
-  // ****************** Begin JSX ********************
+  const handleKeypress = (event) => {
+    //it triggers by pressing the enter key
+  if (event.key === 'Enter') {
+    onAddTodo();
+  }
+};
+
+  // ****************** Begin JSX ******************** //
 
   return (
-    <Container className="p-3">
+    <Container className="p-3 Main">
 
     <div className="container mt-5">
-      <h2 className="text-center">Todo</h2>
+      <div className="input">
+
+      <h2 className="text-center">To-Do List Application <FontAwesomeIcon icon={faCoffee} /></h2>
 
       <input
                 type="text"
                 id="todoInput"
-                className="form-control"
-                placeholder="add todo"
+                className="form-rounded"
+                placeholder="Add something to your to-do list"
                 value={newTodo}
                 onChange={(e) => setNewTodo(e.target.value)}
+                onKeyPress={handleKeypress}
               />
 
       <button className="btn btn-primary btn-block" onClick={onAddTodo}>
@@ -64,29 +79,38 @@ function Main() {
                 Add
               </button>
 
-      <table className="table table-dark mt-5">
+      </div>
+      
+      {/* <Table striped bordered hover responsive>
 
 
         <tbody id="table">
           {todos.map((todo) => (
             <tr key={todo.id}>
-              <td>{todo.todo}</td>
+              <td colSpan={2}>{todo.todo}</td>
               <td>
-                <button
-                  className="btn btn-danger"
+                <Button
+                  variant="danger"
                   onClick={() => deleteTodo(todo.id)}
                 >
-                  {" "}
-                  Delete{" "}
-                </button>{" "}
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table> */}
+
+      <ListGroup variant="flush">
+        {todos.map((todo) => (
+          <ListGroupItem key={todo.id} action onClick={() => deleteTodo(todo.id)}>{todo.todo}</ListGroupItem>
+        ))}
+        
+      </ListGroup>
+
     </div>
     
-    <Button variant="warning" onClick={clearList}>Start from Scratch</Button>
+    <Button variant="warning" onClick={clearList}>Clear the List</Button>
 
     </Container>
   );
